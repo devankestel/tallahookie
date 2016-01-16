@@ -20,7 +20,11 @@ class Vote < ActiveRecord::Base
          names_array << "#{i_vote[:voter_name]}: #{i_vote[:option]}"
       end
       #puts names_array
-      Vote.create(t_id: t_id, bill_t_id: bill_t_id, name: names_array)
+       vote = Vote.create(t_id: t_id, bill_t_id: bill_t_id, name: names_array)
+
+       if Bill.find_by(t_id: bill_t_id)
+        Bill.find_by(t_id: bill_t_id).update(vote_id: vote.id)
+      end
     end
 
   end
