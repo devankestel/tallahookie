@@ -1,4 +1,5 @@
 class Bill < ActiveRecord::Base
+  belongs_to :vote
   private
   def self.get_bills_list(api_key)
     base_uri = "https://tabsontallahassee.com/api/bills/"

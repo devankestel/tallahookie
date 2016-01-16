@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  t_id: MyString
+  bill_t_id: MyString
+  name: MyString
+  option: MyString
+  counts: MyString
+
+two:
+  t_id: MyString
+  bill_t_id: MyString
+  name: MyString
+  option: MyString
+  counts: MyString
