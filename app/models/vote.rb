@@ -24,6 +24,16 @@ class Vote < ActiveRecord::Base
 
        if Bill.find_by(t_id: bill_t_id)
         Bill.find_by(t_id: bill_t_id).update(vote_id: vote.id)
+      else
+        b_response = HTTParty.get("#{base_uri_2}#{bill_t_id}/?apikey=#{api_key}")
+        b_response = JSON.parse(b_response, :symbolize_names => true)
+        puts b_response[:data][:attributes][:legislative_session][:name]
+        year = b_response[:data][:attributes][:legislative_session][:identifier]
+        identifier = b_response[:data][:attributes][:identifier]
+        title = b_response[:data][:attributes][:title]
+        Bill.create(title: title, identifier: identifier, year: year, vote_id: vote.id)
+
+
       end
     end
 
